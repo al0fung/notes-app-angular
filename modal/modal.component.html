@@ -1,0 +1,6 @@
+<div class="modal-backdrop" [id]="modalId" (click)="handleBackdropClick($event)">
+  <div class="modal-box">
+    <button class="modal-close-button modal-button" (click)="handleCloseClick($event)">&times;</button>
+    <ng-content></ng-content>
+  </div>
+</div>

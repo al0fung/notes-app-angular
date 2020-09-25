@@ -1,0 +1,46 @@
+<div class="notes-app">
+  <h1 class="notes-app-heading">Notes</h1>
+  <div class="notes-controls">
+    <input type="text" class="search-field" (input)="handleSearchTextChange($event)" [value]="searchText" placeholder="Search notes..." />
+    <div class="notes-button-controls">
+      <button *ngIf="!selectionMode" class="select-button" (click)="handleSelectClick()">Select Notes for Deletion</button>
+      <button *ngIf="selectionMode" class="cancel-selection-button" (click)="handleCancelClick()">Cancel Selection</button>
+      <button *ngIf="selectionMode" class="delete-selected-button" (click)="handleDeleteClick()">Delete Selected</button>
+      <button class="create-note-button" (click)="handleCreateClick()">+</button>
+    </div>
+  </div>
+  <app-notes
+    [savedNotes]="savedNotes"
+    [selectedNoteIds]="selectedNoteIds"
+    [searchText]="searchText"
+    (noteClick)="handleNoteClick($event)"
+  ></app-notes>
+  <app-create-note-modal
+    *ngIf="createModalShown"
+    [title]="unsavedNote.title"
+    [content]="unsavedNote.content"
+    (closeClick)="handleCreateCloseClick()"
+    (titleChange)="handleCreateTitleChange($event)"
+    (contentChange)="handleCreateContentChange($event)"
+    (discardClick)="handleCreateDiscardClick()"
+    (saveClick)="handleCreateSaveClick()"
+  ></app-create-note-modal>
+  <app-view-note-modal
+    *ngIf="viewModalShown"
+    [title]="currentNote.title"
+    [content]="currentNote.content"
+    (closeClick)="handleViewCloseClick()"
+    (deleteClick)="handleViewDeleteClick()"
+    (editClick)="handleViewEditClick()"
+  ></app-view-note-modal>
+  <app-edit-note-modal
+    *ngIf="editModalShown"
+    [title]="unsavedNote.title"
+    [content]="unsavedNote.content"
+    (closeClick)="handleEditCloseClick()"
+    (titleChange)="handleEditTitleChange($event)"
+    (contentChange)="handleEditContentChange($event)"
+    (discardClick)="handleEditDiscardClick()"
+    (saveClick)="handleEditSaveClick()"
+  ></app-edit-note-modal>
+</div>

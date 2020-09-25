@@ -1,0 +1,8 @@
+<app-modal modalId="view-note-modal" (closeClick)="handleCloseClick()">
+  <h2 class="noteTitle">{{title}}</h2>
+  <p class="noteContent">{{content}}</p>
+  <div class="note-buttons">
+    <button class="note-delete-button modal-button" (click)="handleDeleteClick()">Delete</button>
+    <button class="note-edit-button modal-button" (click)="handleEditClick()">Edit</button>
+  </div>
+</app-modal>

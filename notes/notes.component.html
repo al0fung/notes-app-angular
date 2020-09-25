@@ -1,0 +1,9 @@
+<div class="notes">
+  <app-note *ngFor="let filteredNote of filteredNotes"
+    [id]="filteredNote.id"
+    [title]="filteredNote.title"
+    [content]="filteredNote.content"
+    [selected]="selectedNoteIds.includes(filteredNote.id)"
+    (noteClick)="handleNoteClick($event)"
+  ></app-note>
+</div>

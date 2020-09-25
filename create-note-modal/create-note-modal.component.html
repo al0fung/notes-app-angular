@@ -1,0 +1,8 @@
+<app-modal modalId="create-note-modal" (closeClick)="handleCloseClick()">
+  <input type="text" [value]="title" (input)="handleTitleChange($event)" placeholder="Title..." />
+  <textarea [value]="content" (input)="handleContentChange($event)" placeholder="Note..." rows="15"></textarea>
+  <div class="note-buttons">
+    <button class="note-discard-button modal-button" (click)="handleDiscardClick()">Discard</button>
+    <button class="note-save-button modal-button" (click)="handleSaveClick()">Save</button>
+  </div>
+</app-modal>
